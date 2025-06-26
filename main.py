@@ -84,9 +84,9 @@ def stock_prediction(stock_choice):
 
     # Plot
     fig, ax = plt.subplots(figsize=(12, 6))
-    ax.plot(range(len(y)), y, label='Actual', color='black')
-    ax.plot(range(lag, lag + len(train_pred)), train_pred, label='Train Pred', color='orange')
-    ax.plot(range(lag + len(train_pred), lag + len(train_pred) + len(test_pred)), test_pred, label='Test Pred', color='green')
+    ax.plot(range(len(y)), y, label='Actual', color='black',linewidth=4)
+    ax.plot(range(lag, lag + len(train_pred)), train_pred, label='Train Pred', color='orange',linewidth=1)
+    ax.plot(range(lag + len(train_pred), lag + len(train_pred) + len(test_pred)), test_pred, label='Test Pred', color='green',linewidth=1)
     ax.set_title(f'Stock Price Prediction ({stock_choice}, Linear Regression, Lag 5)')
     ax.set_xlabel('Time Step')
     ax.set_ylabel('Stock Price')
