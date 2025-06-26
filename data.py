@@ -3,6 +3,8 @@ import pandas as pd
 import kagglehub
 from typing import Dict, Hashable, Iterable, List, Tuple
 
+dataset= "jacksoncrow/stock-market-dataset"
+
 def load_sales_dataset(
     local_dir: str | Path | None = None,
     *,
@@ -12,7 +14,7 @@ def load_sales_dataset(
     encoding: str | None = None,          # <-- new
 ) -> pd.DataFrame | tuple[pd.DataFrame, Path]:
     """
-    Fetch jacksoncrow/stock-market-dataset and return it as a pandas DataFrame.
+    Fetch dataset and return it as a pandas DataFrame.
     If `encoding` is None, tries UTF-8 first, then cp1252 automatically.
     """
     # ---------- resolve download location ----------
@@ -21,14 +23,14 @@ def load_sales_dataset(
         local_dir.mkdir(parents=True, exist_ok=True)
 
         kagglehub.dataset_download(
-            "jacksoncrow/stock-market-dataset",
+            dataset,
             force_download=force_download,
             path=str(local_dir),
         )
         csv_path = local_dir / filename
     else:
         dataset_root = kagglehub.dataset_download(
-            "jacksoncrow/stock-market-dataset",
+            dataset,
             force_download=force_download,
         )
         csv_path = Path(dataset_root) / filename
